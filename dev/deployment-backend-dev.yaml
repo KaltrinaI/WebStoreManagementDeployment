@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: dev
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: myregistry/backend:dev
+        ports:
+        - containerPort: 8080
+        env:
+          - name: ENVIRONMENT
+            value: "dev"
+          - name: CONNECTION_STRING
+            value: "Server=database;Port=5432;Database=webstore_dev;User Id=devuser;Password=devpass;"
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
