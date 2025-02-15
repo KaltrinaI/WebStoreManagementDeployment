@@ -17,18 +17,20 @@ spec:
     spec:
       containers:
       - name: backend
-        image: myregistry/backend:staging
+        image: kaltrinai/webstoremanagementbackend:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
         env:
           - name: ENVIRONMENT
             value: "staging"
           - name: CONNECTION_STRING
-            value: "Server=database;Port=5432;Database=webstore_staging;User Id=staginguser;Password=stagingpass;"
+            value: "Host=database;Port=5432;Database=WebStoreManagement;Username=postgres;Password=K@ltr!na8"
+          - name: ASPNETCORE_URLS
+            value: "http://0.0.0.0:5000"
         resources:
           requests:
-            cpu: "500m"
-            memory: "512Mi"
+            cpu: "10m"
+            memory: "2Gi"
           limits:
-            cpu: "1"
-            memory: "1Gi"
+            cpu: "10m"
+            memory: "2Gi"

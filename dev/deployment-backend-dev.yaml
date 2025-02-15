@@ -17,18 +17,20 @@ spec:
     spec:
       containers:
       - name: backend
-        image: myregistry/backend:dev
+        image: kaltrinai/webstoremanagementbackend:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
         env:
           - name: ENVIRONMENT
-            value: "dev"
+            value: "Development"
           - name: CONNECTION_STRING
-            value: "Server=database;Port=5432;Database=webstore_dev;User Id=devuser;Password=devpass;"
+            value: "Host=database;Port=5432;Database=WebStoreManagement;Username=postgres;Password=K@ltr!na8"
+          - name: ASPNETCORE_URLS
+            value: "http://0.0.0.0:5000"
         resources:
           requests:
-            cpu: "250m"
-            memory: "256Mi"
+            cpu: "5m"
+            memory: "512Mi"
           limits:
-            cpu: "500m"
+            cpu: "10m"
             memory: "512Mi"

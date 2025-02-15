@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: database
-        image: myregistry/database:staging
+        image: kaltrinai/webstoremanagementdatabase:latest
         ports:
         - containerPort: 5432
         volumeMounts:
@@ -26,11 +26,18 @@ spec:
           mountPath: /var/lib/postgresql/data
         resources:
           requests:
-            cpu: "500m"
-            memory: "512Mi"
-          limits:
-            cpu: "1"
+            cpu: "50m"
             memory: "1Gi"
+          limits:
+            cpu: "50m"
+            memory: "1Gi"
+        env:
+        - name: POSTGRES_DB
+          value: "WebStoreManagement"
+        - name: POSTGRES_USER
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "K@ltr!na8"
   volumeClaimTemplates:
   - metadata:
       name: db-storage

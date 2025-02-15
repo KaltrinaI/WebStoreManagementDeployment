@@ -10,6 +10,7 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 8080
-  type: ClusterIP
+      port: 5000
+      targetPort: 5000
+      nodePort: 31363
+  type: NodePort
